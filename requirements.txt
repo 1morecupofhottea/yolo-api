@@ -5,7 +5,7 @@ python-multipart==0.0.6
 
 # ML/AI - Updated to latest versions
 torch==2.5.1
-torchvision==0.20.1
+torchvision==0.24.0
 ultralytics==8.3.0
 
 # Image processing
