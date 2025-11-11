@@ -40,6 +40,10 @@ def pil_to_base64(img: Image.Image) -> str:
     img_bytes = buf.getvalue()
     return base64.b64encode(img_bytes).decode("utf-8")
 
+@app.get("/")
+async def root():
+    return {"message": "🚀 YOLOv8 Inference API is running!"}
+
 # Inference endpoint
 @app.post("/predict")
 async def predict(
