@@ -8,7 +8,6 @@ import asyncio
 from concurrent.futures import ThreadPoolExecutor
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from starlette.middleware.gzip import GZIPMiddleware
 from fastapi.responses import JSONResponse
 from ultralytics import YOLO
 from PIL import Image
@@ -30,9 +29,6 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc"
 )
-
-# Add GZIP compression middleware
-app.add_middleware(GZIPMiddleware, minimum_size=1000)
 
 # CORS middleware
 app.add_middleware(
