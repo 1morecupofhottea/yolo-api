@@ -1,5 +1,17 @@
+# Core dependencies
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+
+# ML/AI
+torch==2.1.0 --index-url https://download.pytorch.org/whl/cpu
+torchvision==0.16.0 --index-url https://download.pytorch.org/whl/cpu
 ultralytics==8.3.0
-fastapi
-uvicorn
-pillow
-opencv-python-headless
+
+# Image processing
+Pillow==10.1.0
+opencv-python-headless==4.8.1.78
+
+# Utilities
+pydantic==2.5.0
+python-dotenv==1.0.0
