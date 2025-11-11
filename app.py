@@ -7,7 +7,7 @@ import uvicorn
 app = FastAPI()
 
 # Load model once when server starts
-model = YOLO("best.pt")
+model = YOLO("yolo-api/yolov8_model_epoch100_batch32_lr0_0005.pt")
 
 @app.get("/")
 def home():
