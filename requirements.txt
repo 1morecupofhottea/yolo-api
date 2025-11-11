@@ -7,7 +7,6 @@ python-multipart==0.0.6
 torch==2.1.0 --index-url https://download.pytorch.org/whl/cpu
 torchvision==0.16.0 --index-url https://download.pytorch.org/whl/cpu
 ultralytics==8.3.0
-<<<<<<< HEAD
 
 # Image processing
 Pillow==10.1.0
@@ -16,13 +15,3 @@ opencv-python-headless==4.8.1.78
 # Utilities
 pydantic==2.5.0
 python-dotenv==1.0.0
-=======
-opencv-python-headless
-fastapi
-uvicorn
-ultralytics
-pillow
-torch
-torchvision
-python-multipart
->>>>>>> 190eb4367bfd6ae377673866d1ef53926625e222
