@@ -2,6 +2,7 @@ services:
   - type: web
     name: yolo-api
     env: python
+    runtime: python
     region: oregon
     plan: free
     branch: main
