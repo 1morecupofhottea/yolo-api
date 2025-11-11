@@ -106,7 +106,18 @@ async def preprocess_image(image_bytes: bytes, max_size: int = 1280) -> Image.Im
     loop = asyncio.get_event_loop()
     
     def _load_and_resize():
-        img = Image.open(io.BytesIO(image_bytes)).convert("RGB")
+        img = Image.open(io.BytesIO(image_bytes))
+        
+        # Handle EXIF orientation to prevent rotation issues
+        try:
+            from PIL import ImageOps
+            img = ImageOps.exif_transpose(img)
+        except Exception:
+            pass
+        
+        # Convert to RGB
+        img = img.convert("RGB")
+        
         # Resize large images to reduce processing time
         if max(img.size) > max_size:
             ratio = max_size / max(img.size)
@@ -222,9 +233,10 @@ async def predict(
                 for box in boxes
             ]
             
-            # Generate annotated image
+            # Generate annotated image (correctly handle color channels)
             plot_result = await loop.run_in_executor(executor, r.plot)
-            annotated_img = Image.fromarray(plot_result[:, :, ::-1])
+            # plot() returns BGR, convert to RGB for PIL
+            annotated_img = Image.fromarray(plot_result[..., ::-1])
         
         # Convert to base64
         base64_img = await loop.run_in_executor(
